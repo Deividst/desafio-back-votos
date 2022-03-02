@@ -4,8 +4,7 @@ CREATE TABLE tb_record (
 	register_date timestamp NOT NULL,
 	status int4 NULL DEFAULT 1,
 	subject varchar(255) NOT NULL,
-	title varchar(255) NOT NULL,
-	session_id int8 NOT NULL,
+	session_id int8,
 	CONSTRAINT tb_record_pkey PRIMARY KEY (id)
 );
 

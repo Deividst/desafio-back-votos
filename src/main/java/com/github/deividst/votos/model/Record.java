@@ -34,9 +34,6 @@ public class Record {
     @Column(name = "ID")
     private Long id;
 
-    @Column(name = "TITLE")
-    private String title;
-
     @Column(name = "SUBJECT")
     private String subject;
 
@@ -55,7 +52,7 @@ public class Record {
     private Set<Vote> votes;
 
     @Convert(converter = RecordStatusEnumConverter.class)
-    @Column(name = "STATUS")
+    @Column(name = "STATUS", columnDefinition = "Integer default '1'")
     private RecordStatusEnum status;
 
 }
