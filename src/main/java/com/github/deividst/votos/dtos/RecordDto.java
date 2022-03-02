@@ -8,13 +8,14 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 import com.github.deividst.votos.enums.RecordStatusEnum;
-import com.github.deividst.votos.model.Session;
 import com.github.deividst.votos.model.Vote;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Set;
@@ -25,14 +26,15 @@ import java.util.Set;
 @NoArgsConstructor
 @Getter
 @Setter
+@Builder
 public class RecordDto implements Serializable {
 
     private Long id;
 
-    private String title;
-
+    @NotBlank
     private String subject;
 
+    @NotBlank
     private String description;
 
     @JsonFormat(pattern = "dd-MM-yyyy hh:mm:ss")
@@ -44,6 +46,6 @@ public class RecordDto implements Serializable {
 
     private Set<Vote> votes;
 
-    private String status;
+    private RecordStatusEnum status;
 
 }
