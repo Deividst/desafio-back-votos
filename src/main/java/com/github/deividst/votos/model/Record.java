@@ -17,7 +17,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-import javax.persistence.SequenceGenerator;
 import java.time.LocalDateTime;
 import java.util.Set;
 
@@ -26,11 +25,10 @@ import java.util.Set;
 @NoArgsConstructor
 @Builder
 @Entity(name = "TB_RECORD")
-@SequenceGenerator(name = "SQ_RECORD", sequenceName = "SQ_RECORD", allocationSize = 1)
 public class Record {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SQ_RECORD")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
     private Long id;
 

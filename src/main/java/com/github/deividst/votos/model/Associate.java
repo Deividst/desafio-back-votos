@@ -10,7 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @Data
@@ -18,18 +18,17 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Builder
 @Entity(name = "TB_ASSOCIATE")
-@SequenceGenerator(name = "SQ_ASSOCIATE", sequenceName = "SQ_ASSOCIATE", allocationSize = 1)
-public class Associate {
+public class Associate implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SQ_ASSOCIATE")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
     private Long id;
 
     @Column(name = "NAME")
     private String name;
 
-    @Column(name = "CPF")
+    @Column(name = "CPF", unique = true)
     private String cpf;
 
     @Column(name = "REGISTER_DATE")
