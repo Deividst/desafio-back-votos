@@ -22,6 +22,8 @@ import static com.github.deividst.votos.utils.SwaggerSchemaConstants.ID_DESCRIPT
 import static com.github.deividst.votos.utils.SwaggerSchemaConstants.ID_EXAMPLE;
 import static com.github.deividst.votos.utils.SwaggerSchemaConstants.RECORD_STATUS_DESCRIPTION;
 import static com.github.deividst.votos.utils.SwaggerSchemaConstants.RECORD_STATUS_EXAMPLE;
+import static com.github.deividst.votos.utils.SwaggerSchemaConstants.REGISTER_DATE_DESCRIPTION;
+import static com.github.deividst.votos.utils.SwaggerSchemaConstants.REGISTER_DATE_EXAMPLE;
 import static com.github.deividst.votos.utils.SwaggerSchemaConstants.SESSION_DESCRIPTION;
 import static com.github.deividst.votos.utils.SwaggerSchemaConstants.SUBJECT_DESCRIPTION;
 import static com.github.deividst.votos.utils.SwaggerSchemaConstants.SUBJECT_EXAMPLE;
@@ -55,6 +57,7 @@ public class RecordResponseDto {
     @Schema(required = true, description = SESSION_DESCRIPTION)
     private SessionResponseDto session;
 
+    @Schema(required = true, description = REGISTER_DATE_DESCRIPTION, example = REGISTER_DATE_EXAMPLE)
     @JsonFormat(pattern = "dd-MM-yyyy HH:mm:ss")
     private LocalDateTime registerDate;
 

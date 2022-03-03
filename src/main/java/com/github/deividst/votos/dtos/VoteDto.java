@@ -24,7 +24,7 @@ public class VoteDto {
 
     private Long voteId;
 
-    private AssociateDto associate;
+    private AssociateSaveRequestDto associate;
 
     private String voteType;
 

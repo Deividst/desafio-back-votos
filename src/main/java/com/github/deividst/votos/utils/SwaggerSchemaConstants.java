@@ -18,5 +18,12 @@ public class SwaggerSchemaConstants {
     public static final String ERROR_MESSAGE_DESCRIPTION = "Lista de Mensagens de erro do sistema";
     public static final String ERROR_MESSAGE_EXAMPLE = "O campo subject é obrigatório";
     public static final String RECORD_ID_DESCRIPTION = "Identificador unico da Pauta";
+    public static final String NAME_DESCRIPTION = "Nome do associado";
+    public static final String NAME_EXAMPLE = "Fulado";
+    public static final String CPF_DESCRIPTION = "Número de CPF do associado";
+    public static final String CPF_EXAMPLE = "03882214023";
+    public static final String REGISTER_DATE_DESCRIPTION = "Data de inserção na base de dados";
+    public static final String REGISTER_DATE_EXAMPLE = "02-03-2022 09:11:00";
+
 
 }
