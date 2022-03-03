@@ -1,6 +1,7 @@
 package com.github.deividst.votos.mapper;
 
-import com.github.deividst.votos.dtos.RecordDto;
+import com.github.deividst.votos.dtos.RecordSaveRequestDto;
+import com.github.deividst.votos.dtos.RecordResponseDto;
 import com.github.deividst.votos.enums.RecordStatusEnum;
 import com.github.deividst.votos.model.Record;
 
@@ -9,7 +10,7 @@ import java.util.Objects;
 
 public class RecordMapper {
 
-    public static Record toSaveEntity(RecordDto dto) {
+    public static Record toSaveEntity(RecordSaveRequestDto dto) {
         return Record.builder()
                 .description(dto.getDescription())
                 .subject(dto.getSubject())
@@ -19,8 +20,8 @@ public class RecordMapper {
                 .build();
     }
 
-    public static RecordDto toDto(Record entity) {
-        return RecordDto.builder()
+    public static RecordResponseDto toResponseDto(Record entity) {
+        return RecordResponseDto.builder()
                 .id(entity.getId())
                 .description(entity.getDescription())
                 .subject(entity.getSubject())

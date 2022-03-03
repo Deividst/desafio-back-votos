@@ -1,6 +1,7 @@
 package com.github.deividst.votos.service;
 
-import com.github.deividst.votos.dtos.RecordDto;
+import com.github.deividst.votos.dtos.RecordResponseDto;
+import com.github.deividst.votos.dtos.RecordSaveRequestDto;
 import com.github.deividst.votos.mapper.RecordMapper;
 import com.github.deividst.votos.model.Record;
 import com.github.deividst.votos.repository.RecordRepository;
@@ -15,10 +16,10 @@ public class RecordService {
         this.recordRepository = recordRepository;
     }
 
-    public RecordDto saveRecord(RecordDto recordDto) {
-        Record recordEntity = RecordMapper.toSaveEntity(recordDto);
+    public RecordResponseDto saveRecord(RecordSaveRequestDto recordSaveRequestDto) {
+        Record recordEntity = RecordMapper.toSaveEntity(recordSaveRequestDto);
         recordEntity = this.recordRepository.save(recordEntity);
-        return RecordMapper.toDto(recordEntity);
+        return RecordMapper.toResponseDto(recordEntity);
     }
 
 }

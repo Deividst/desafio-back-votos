@@ -43,7 +43,7 @@ public class Record {
     @Column(name = "REGISTER_DATE")
     private LocalDateTime registerDate;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "SESSION_ID", referencedColumnName = "id")
     private Session session;
 
@@ -52,7 +52,7 @@ public class Record {
     private Set<Vote> votes;
 
     @Convert(converter = RecordStatusEnumConverter.class)
-    @Column(name = "STATUS", columnDefinition = "Integer default '1'")
+    @Column(name = "STATUS")
     private RecordStatusEnum status;
 
 }

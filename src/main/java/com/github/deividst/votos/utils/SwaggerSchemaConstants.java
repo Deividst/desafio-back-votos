@@ -1,0 +1,21 @@
+package com.github.deividst.votos.utils;
+
+public class SwaggerSchemaConstants {
+
+    public static final String SUBJECT_DESCRIPTION = "Assunto da Pauta";
+    public static final String SUBJECT_EXAMPLE = "Exemplo de Assunto da Pauta";
+    public static final String DESCRIPTION_DESCRIPTION = "Descrição da Pauta";
+    public static final String DESCRIPTION_EXAMPLE = "Exemplo de Descrição da Pauta";
+    public static final String SESSION_DESCRIPTION = "Sessão de Votação para Pauta";
+    public static final String SESSION_INITIAL_DATE_DESCRIPTION = "Data e hora para inicio da sessão";
+    public static final String SESSION_INITIAL_EXAMPLE = "02-03-2022 09:10:00";
+    public static final String SESSION_FINAL_DATE_DESCRIPTION = "Data e hora para fim da sessão, Valor default = initialDate + 1 minuto";
+    public static final String SESSION_FINAL_EXAMPLE = "02-03-2022 09:11:00";
+    public static final String ID_DESCRIPTION = "Identificador unico";
+    public static final String ID_EXAMPLE = "1";
+    public static final String RECORD_STATUS_DESCRIPTION = "Status da pauta";
+    public static final String RECORD_STATUS_EXAMPLE = "IN_PROGRESS, APPROVED, DISAPPROVED";
+    public static final String ERROR_MESSAGE_DESCRIPTION = "Lista de Mensagens de erro do sistema";
+    public static final String ERROR_MESSAGE_EXAMPLE = "O campo subject é obrigatório";
+
+}
