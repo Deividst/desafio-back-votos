@@ -18,7 +18,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Builder
 @Entity(name = "TB_ASSOCIATE")
-public class Associate implements Serializable {
+public class Associate {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

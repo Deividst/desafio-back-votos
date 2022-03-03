@@ -32,7 +32,10 @@ public class SpringFoxConfig implements WebMvcConfigurer {
                 .additionalModels(typeResolver.resolve(Page.class))
                 .useDefaultResponseMessages(false)
                 .apiInfo(apiInfo())
-                .tags(new Tag("Records", "Pauta"), new Tag("Session", "Sessão"));
+                .tags(new Tag("Records", "Pauta"),
+                        new Tag("Session", "Sessão"),
+                        new Tag("Associate", "Associado"),
+                        new Tag("Vote", "Voto"));
     }
 
     @Override

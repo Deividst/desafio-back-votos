@@ -7,6 +7,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Convert;
 import javax.persistence.Entity;
@@ -14,6 +15,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import java.time.LocalDateTime;
 
@@ -32,6 +34,10 @@ public class Vote {
     @OneToOne
     @JoinColumn(name = "ASSOCIATE_ID", referencedColumnName = "id")
     private Associate associate;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "RECORD_ID", referencedColumnName = "id")
+    private Record record;
 
     @Convert(converter = VoteTypeEnumConverter.class)
     @Column(name = "VOTE_TYPE")

@@ -45,8 +45,7 @@ public class Record {
     @JoinColumn(name = "SESSION_ID", referencedColumnName = "id")
     private Session session;
 
-    @OneToMany
-    @JoinColumn(name = "RECORD_ID", referencedColumnName = "id")
+    @OneToMany(mappedBy = "record")
     private Set<Vote> votes;
 
     @Convert(converter = RecordStatusEnumConverter.class)

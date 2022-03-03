@@ -32,6 +32,10 @@ public interface SessionController {
 
             @ApiResponse(responseCode = "400", description = "Erro no payload ao cadastrar sessão.",
                     content = @Content(mediaType = "application/json",
+                            schema = @Schema(implementation = ErrorDataDto.class))),
+
+            @ApiResponse(responseCode = "500", description = "Resposta de erro de condição inesperada na aplicação que o impediu de atender à solicitação.",
+                    content = @Content(mediaType = "application/json",
                             schema = @Schema(implementation = ErrorDataDto.class)))
     })
     @ResponseStatus(HttpStatus.CREATED)
@@ -42,6 +46,10 @@ public interface SessionController {
             @ApiResponse(responseCode = "200", description = "Sucesso ao listar sessões.",
                     content = @Content(mediaType = "application/json",
                             array = @ArraySchema(arraySchema = @Schema(implementation = SessionResponseDto.class)))),
+
+            @ApiResponse(responseCode = "500", description = "Resposta de erro de condição inesperada na aplicação que o impediu de atender à solicitação.",
+                    content = @Content(mediaType = "application/json",
+                            schema = @Schema(implementation = ErrorDataDto.class)))
     })
     @ResponseStatus(HttpStatus.OK)
     ResponseEntity<List<SessionResponseDto>> findAll();

@@ -28,6 +28,10 @@ public interface RecordController {
 
             @ApiResponse(responseCode = "400", description = "Erro no payload ao cadastrar pauta.",
                     content = @Content(mediaType = "application/json",
+                            schema = @Schema(implementation = ErrorDataDto.class))),
+
+            @ApiResponse(responseCode = "500", description = "Resposta de erro de condição inesperada na aplicação que o impediu de atender à solicitação.",
+                    content = @Content(mediaType = "application/json",
                             schema = @Schema(implementation = ErrorDataDto.class)))
     })
     @ResponseStatus(HttpStatus.CREATED)
@@ -38,6 +42,10 @@ public interface RecordController {
             @ApiResponse(responseCode = "200", description = "Sucesso ao listar pautas.",
                     content = @Content(mediaType = "application/json",
                             array = @ArraySchema(arraySchema = @Schema(implementation = RecordResponseDto.class)))),
+
+            @ApiResponse(responseCode = "500", description = "Resposta de erro de condição inesperada na aplicação que o impediu de atender à solicitação.",
+                    content = @Content(mediaType = "application/json",
+                            schema = @Schema(implementation = ErrorDataDto.class)))
     })
     @ResponseStatus(HttpStatus.OK)
     ResponseEntity<List<RecordResponseDto>> findAll();

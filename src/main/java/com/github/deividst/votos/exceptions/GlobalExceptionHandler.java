@@ -47,6 +47,26 @@ public class GlobalExceptionHandler {
                 .build(), HttpStatus.BAD_REQUEST);
     }
 
+    @ApiResponse(responseCode = "400", description = "Erro de Negocio")
+    @ExceptionHandler(BusinessException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    protected ResponseEntity<ErrorDataDto> processBusinessException(final BusinessException ex) {
+
+        return new ResponseEntity<>(ErrorDataDto.builder()
+                .errorMessages(Collections.singletonList(ex.getMessageError()))
+                .build(), HttpStatus.BAD_REQUEST);
+    }
+
+    @ApiResponse(responseCode = "500", description = "Problemas no processamento")
+    @ExceptionHandler(Exception.class)
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    protected ResponseEntity<ErrorDataDto> processBusinessException(final Exception ex) {
+
+        return new ResponseEntity<>(ErrorDataDto.builder()
+                .errorMessages(Collections.singletonList("Problemas no processamento - Tente novamente"))
+                .build(), HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
     @ExceptionHandler(EntityNotFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
     protected ResponseEntity<ErrorDataDto> processBusinessException(final EntityNotFoundException ex) {

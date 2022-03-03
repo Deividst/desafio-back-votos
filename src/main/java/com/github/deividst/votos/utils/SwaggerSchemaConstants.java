@@ -24,6 +24,9 @@ public class SwaggerSchemaConstants {
     public static final String CPF_EXAMPLE = "03882214023";
     public static final String REGISTER_DATE_DESCRIPTION = "Data de inserção na base de dados";
     public static final String REGISTER_DATE_EXAMPLE = "02-03-2022 09:11:00";
+    public static final String ASSOCIATE_ID_DESCRIPTION = "Identificador unico do associado";
+    public static final String VOTE_TYPE_DESCRIPTION = "Tipo de voto";
+    public static final String VOTE_TYPE_EXAMPLE = "YES, NO";
 
 
 }

@@ -8,6 +8,7 @@ import com.github.deividst.votos.model.Session;
 import com.github.deividst.votos.repository.RecordRepository;
 import com.github.deividst.votos.repository.SessionRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityNotFoundException;
 import java.util.List;
@@ -25,6 +26,7 @@ public class SessionService {
         this.recordRepository = recordRepository;
     }
 
+    @Transactional
     public SessionResponseDto save(SessionSaveRequestDto sessionDto) {
         verifyFinalDate(sessionDto);
         Session sessionEntity = SessionMapper.toSaveEntity(sessionDto);
