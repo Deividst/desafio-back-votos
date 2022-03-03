@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -44,6 +45,15 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(ErrorDataDto.builder()
                 .errorMessages(Collections.singletonList("O Payload informado é inválido"))
                 .build(), HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(EntityNotFoundException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    protected ResponseEntity<ErrorDataDto> processBusinessException(final EntityNotFoundException ex) {
+
+        return new ResponseEntity<>(ErrorDataDto.builder()
+                .errorMessages(Collections.singletonList(ex.getMessage()))
+                .build(), HttpStatus.NOT_FOUND);
     }
 
     private ErrorDataDto createErrorList(BindingResult bindingResult) {

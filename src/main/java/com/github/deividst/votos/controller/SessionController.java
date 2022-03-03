@@ -2,7 +2,8 @@ package com.github.deividst.votos.controller;
 
 import com.github.deividst.votos.dtos.ErrorDataDto;
 import com.github.deividst.votos.dtos.RecordResponseDto;
-import com.github.deividst.votos.dtos.RecordSaveRequestDto;
+import com.github.deividst.votos.dtos.SessionResponseDto;
+import com.github.deividst.votos.dtos.SessionSaveRequestDto;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -17,28 +18,31 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 import java.util.List;
 
+public interface SessionController {
 
-public interface RecordController {
-
-    @Operation(description = "Realiza o cadastro de uma nova Pauta.")
+    @Operation(description = "Realiza o cadastro de uma nova sessão.")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "201", description = "Sucesso ao cadastrar pauta.",
+            @ApiResponse(responseCode = "201", description = "Sucesso ao cadastrar sessão.",
                     content = @Content(mediaType = "application/json",
-                            schema = @Schema(implementation = RecordResponseDto.class))),
+                            schema = @Schema(implementation = SessionResponseDto.class))),
 
-            @ApiResponse(responseCode = "400", description = "Erro no payload ao cadastrar pauta.",
+            @ApiResponse(responseCode = "404", description = "Erro ao cadastrar sessão, recordId informado não encontrado.",
+                    content = @Content(mediaType = "application/json",
+                            schema = @Schema(implementation = ErrorDataDto.class))),
+
+            @ApiResponse(responseCode = "400", description = "Erro no payload ao cadastrar sessão.",
                     content = @Content(mediaType = "application/json",
                             schema = @Schema(implementation = ErrorDataDto.class)))
     })
     @ResponseStatus(HttpStatus.CREATED)
-    ResponseEntity<RecordResponseDto> save(@Validated @RequestBody RecordSaveRequestDto recordDto);
+    ResponseEntity<SessionResponseDto> save(@Validated @RequestBody SessionSaveRequestDto sessionDto);
 
-    @Operation(description = "Lista todas a pautas.")
+    @Operation(description = "Lista todas as sessões.")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Sucesso ao listar pautas.",
+            @ApiResponse(responseCode = "200", description = "Sucesso ao listar sessões.",
                     content = @Content(mediaType = "application/json",
-                            array = @ArraySchema(arraySchema = @Schema(implementation = RecordResponseDto.class)))),
+                            array = @ArraySchema(arraySchema = @Schema(implementation = SessionResponseDto.class)))),
     })
     @ResponseStatus(HttpStatus.OK)
-    ResponseEntity<List<RecordResponseDto>> findAll();
+    ResponseEntity<List<SessionResponseDto>> findAll();
 }

@@ -4,6 +4,7 @@ import com.fasterxml.classmate.TypeResolver;
 import com.github.deividst.votos.dtos.ErrorDataDto;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.domain.Page;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import springfox.documentation.builders.ApiInfoBuilder;
@@ -28,9 +29,10 @@ public class SpringFoxConfig implements WebMvcConfigurer {
                     .paths(PathSelectors.ant("/v1/*"))
                     .build()
                 .additionalModels(typeResolver.resolve(ErrorDataDto.class))
+                .additionalModels(typeResolver.resolve(Page.class))
                 .useDefaultResponseMessages(false)
                 .apiInfo(apiInfo())
-                .tags(new Tag("Records", "Pauta"));
+                .tags(new Tag("Records", "Pauta"), new Tag("Session", "Sessão"));
     }
 
     @Override

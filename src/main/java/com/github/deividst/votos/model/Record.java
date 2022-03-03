@@ -43,7 +43,7 @@ public class Record {
     @Column(name = "REGISTER_DATE")
     private LocalDateTime registerDate;
 
-    @OneToOne(cascade = CascadeType.PERSIST)
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "SESSION_ID", referencedColumnName = "id")
     private Session session;
 

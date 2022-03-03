@@ -9,7 +9,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
+import org.springframework.validation.annotation.Validated;
 
+import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
@@ -40,6 +42,7 @@ public class RecordSaveRequestDto {
     @NotBlank(message = "O campo description é obrigatório")
     private String description;
 
+    @Valid
     @Schema(required = true, description = SESSION_DESCRIPTION)
     private SessionSaveRecordRequestDto session;
 

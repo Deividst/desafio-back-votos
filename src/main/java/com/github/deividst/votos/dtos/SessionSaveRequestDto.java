@@ -17,6 +17,8 @@ import lombok.Setter;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
+import static com.github.deividst.votos.utils.SwaggerSchemaConstants.ID_EXAMPLE;
+import static com.github.deividst.votos.utils.SwaggerSchemaConstants.RECORD_ID_DESCRIPTION;
 import static com.github.deividst.votos.utils.SwaggerSchemaConstants.SESSION_FINAL_DATE_DESCRIPTION;
 import static com.github.deividst.votos.utils.SwaggerSchemaConstants.SESSION_FINAL_EXAMPLE;
 import static com.github.deividst.votos.utils.SwaggerSchemaConstants.SESSION_INITIAL_DATE_DESCRIPTION;
@@ -29,7 +31,11 @@ import static com.github.deividst.votos.utils.SwaggerSchemaConstants.SESSION_INI
 @Getter
 @Setter
 @Builder
-public class SessionSaveRecordRequestDto {
+public class SessionSaveRequestDto {
+
+    @Schema(required = true, description = RECORD_ID_DESCRIPTION, example = ID_EXAMPLE)
+    @NotNull(message = "O campo recordId é obrigatório")
+    private Long recordId;
 
     @Schema(required = true, description = SESSION_INITIAL_DATE_DESCRIPTION, example = SESSION_INITIAL_EXAMPLE)
     @NotNull(message = "O campo initialDate é obrigatório")

@@ -4,9 +4,12 @@ import com.github.deividst.votos.dtos.RecordSaveRequestDto;
 import com.github.deividst.votos.dtos.RecordResponseDto;
 import com.github.deividst.votos.enums.RecordStatusEnum;
 import com.github.deividst.votos.model.Record;
+import org.springframework.data.domain.Page;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class RecordMapper {
 
@@ -29,6 +32,12 @@ public class RecordMapper {
                 .registerDate(entity.getRegisterDate())
                 .session(Objects.isNull(entity.getSession()) ? null : SessionMapper.toDto(entity.getSession()))
                 .build();
+    }
+
+    public static List<RecordResponseDto> toResponseList(List<Record> result) {
+        return result.stream()
+                .map(RecordMapper::toResponseDto)
+                .collect(Collectors.toList());
     }
 
 }

@@ -17,5 +17,6 @@ public class SwaggerSchemaConstants {
     public static final String RECORD_STATUS_EXAMPLE = "IN_PROGRESS, APPROVED, DISAPPROVED";
     public static final String ERROR_MESSAGE_DESCRIPTION = "Lista de Mensagens de erro do sistema";
     public static final String ERROR_MESSAGE_EXAMPLE = "O campo subject é obrigatório";
+    public static final String RECORD_ID_DESCRIPTION = "Identificador unico da Pauta";
 
 }
