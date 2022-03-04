@@ -1,16 +1,21 @@
 package com.github.deividst.votos.service;
 
 import com.github.deividst.votos.dtos.VoteDto;
+import com.github.deividst.votos.enums.RecordStatusEnum;
+import com.github.deividst.votos.exceptions.BusinessException;
 import com.github.deividst.votos.model.Associate;
 import com.github.deividst.votos.model.Record;
+import com.github.deividst.votos.model.Session;
 import com.github.deividst.votos.model.Vote;
 import com.github.deividst.votos.repository.AssociateRepository;
 import com.github.deividst.votos.repository.RecordRepository;
 import com.github.deividst.votos.repository.VoteRepository;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -42,12 +47,29 @@ public class VoteService {
         if (record.isEmpty())
             throw new EntityNotFoundException("Nenhum registro encontrato com o recordId informado.");
 
-        this.voteRepository.save(Vote.builder()
-                .voteType(voteDto.getVoteType())
-                .registerDate(LocalDateTime.now())
-                .record(record.get())
-                .associate(associate.get())
-                .build());
+        checkSessionIsOpen(record.get().getSession());
+
+        try {
+            this.voteRepository.save(Vote.builder()
+                    .voteType(voteDto.getVoteType())
+                    .registerDate(LocalDateTime.now())
+                    .record(record.get())
+                    .associate(associate.get())
+                    .build());
+        } catch (DataIntegrityViolationException e) {
+            throw new BusinessException("O associado não pode votar duas vezes na mesma sessão.");
+        }
+
+    }
+
+    private void checkSessionIsOpen(Session session) {
+        if (session.getFinalDate().isBefore(LocalDateTime.now())) {
+            throw new BusinessException("A sessão informada não está disponivel");
+        }
+    }
+
+    public List<Vote> findCompletedVoting() {
+        return this.voteRepository.findCompletedVoting(LocalDateTime.now(), RecordStatusEnum.IN_PROGRESS);
     }
 
 }

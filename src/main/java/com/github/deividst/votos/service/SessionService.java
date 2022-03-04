@@ -36,9 +36,10 @@ public class SessionService {
             throw new EntityNotFoundException("Nenhum registro encontrato com o recordId informado.");
         }
 
-        sessionEntity.setRecord(recordEntity.get());
-        recordEntity.get().setSession(sessionEntity);
         sessionEntity = this.sessionRepository.save(sessionEntity);
+        recordEntity.get().setSession(sessionEntity);
+        this.recordRepository.save(recordEntity.get());
+
         return SessionMapper.toDto(sessionEntity);
     }
 
