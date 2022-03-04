@@ -20,6 +20,7 @@
         <flyway-core.version>8.5.0</flyway-core.version>
         <validation-api.version>2.0.1.Final</validation-api.version>
         <springfox.version>3.0.0</springfox.version>
+        <spring.cloud-version>Hoxton.SR9</spring.cloud-version>
     </properties>
 
     <dependencies>
@@ -71,7 +72,27 @@
             <artifactId>springfox-swagger-ui</artifactId>
             <version>${springfox.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-stream-binder-rabbit</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-stream-rabbit</artifactId>
+        </dependency>
     </dependencies>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring.cloud-version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <build>
         <plugins>
