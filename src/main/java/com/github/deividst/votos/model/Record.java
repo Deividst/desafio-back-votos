@@ -1,5 +1,6 @@
 package com.github.deividst.votos.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.github.deividst.votos.converter.RecordStatusEnumConverter;
 import com.github.deividst.votos.enums.RecordStatusEnum;
 import lombok.AllArgsConstructor;
@@ -15,10 +16,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import java.time.LocalDateTime;
-import java.util.Set;
 
 @Data
 @AllArgsConstructor
@@ -44,9 +43,6 @@ public class Record {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "SESSION_ID", referencedColumnName = "id")
     private Session session;
-
-    @OneToMany(mappedBy = "record")
-    private Set<Vote> votes;
 
     @Convert(converter = RecordStatusEnumConverter.class)
     @Column(name = "STATUS")

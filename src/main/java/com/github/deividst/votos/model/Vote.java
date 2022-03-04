@@ -1,5 +1,6 @@
 package com.github.deividst.votos.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.github.deividst.votos.converter.VoteTypeEnumConverter;
 import com.github.deividst.votos.enums.TypeVoteEnum;
 import lombok.AllArgsConstructor;
