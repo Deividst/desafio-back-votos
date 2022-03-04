@@ -13,7 +13,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-public interface VoteCotroller {
+public interface VoteController {
 
     @Operation(description = "Realiza o processo de votação em uma pauta.")
     @ApiResponses(value = {

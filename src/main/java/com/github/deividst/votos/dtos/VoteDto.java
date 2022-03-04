@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.github.deividst.votos.enums.TypeVoteEnum;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -23,6 +24,7 @@ import static com.github.deividst.votos.utils.SwaggerSchemaConstants.VOTE_TYPE_E
 @NoArgsConstructor
 @Getter
 @Setter
+@Builder
 public class VoteDto {
 
     @NotNull(message = "O campo associateId é obrigatório")

@@ -1,7 +1,6 @@
 package com.github.deividst.votos.controller;
 
 import com.github.deividst.votos.dtos.ErrorDataDto;
-import com.github.deividst.votos.dtos.RecordResponseDto;
 import com.github.deividst.votos.dtos.SessionResponseDto;
 import com.github.deividst.votos.dtos.SessionSaveRequestDto;
 import io.swagger.v3.oas.annotations.Operation;

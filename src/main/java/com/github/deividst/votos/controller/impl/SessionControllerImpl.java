@@ -1,7 +1,6 @@
 package com.github.deividst.votos.controller.impl;
 
 import com.github.deividst.votos.controller.SessionController;
-import com.github.deividst.votos.dtos.RecordResponseDto;
 import com.github.deividst.votos.dtos.SessionResponseDto;
 import com.github.deividst.votos.dtos.SessionSaveRequestDto;
 import com.github.deividst.votos.service.SessionService;

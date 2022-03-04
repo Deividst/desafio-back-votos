@@ -1,5 +1,6 @@
 package com.github.deividst.votos.controller.impl;
 
+import com.github.deividst.votos.controller.VoteController;
 import com.github.deividst.votos.dtos.VoteDto;
 import com.github.deividst.votos.service.VoteService;
 import io.swagger.annotations.Api;
@@ -13,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 @Api(tags = "Vote")
 @RestController
 @RequestMapping("v1/vote")
-public class VoteControllerImpl {
+public class VoteControllerImpl implements VoteController {
 
     private final VoteService voteService;
 
