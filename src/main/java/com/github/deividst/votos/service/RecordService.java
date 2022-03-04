@@ -2,6 +2,7 @@ package com.github.deividst.votos.service;
 
 import com.github.deividst.votos.dtos.RecordResponseDto;
 import com.github.deividst.votos.dtos.RecordSaveRequestDto;
+import com.github.deividst.votos.enums.RecordStatusEnum;
 import com.github.deividst.votos.mapper.RecordMapper;
 import com.github.deividst.votos.model.Record;
 import com.github.deividst.votos.repository.RecordRepository;
@@ -29,6 +30,10 @@ public class RecordService {
     public List<RecordResponseDto> findAll() {
         List<Record> result = this.recordRepository.findAll();
         return RecordMapper.toResponseList(result);
+    }
+
+    public void updateStatus(RecordStatusEnum status, Long id) {
+        this.recordRepository.updateStatus(status, id);
     }
 
     private void verifySessionFinalDate(RecordSaveRequestDto recordDto) {
