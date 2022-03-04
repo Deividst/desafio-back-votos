@@ -12,6 +12,7 @@ import com.github.deividst.votos.repository.RecordRepository;
 import com.github.deividst.votos.repository.VoteRepository;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityNotFoundException;
 import java.time.LocalDateTime;
@@ -34,6 +35,7 @@ public class VoteService {
         this.cpfIntegrationService = cpfIntegrationService;
     }
 
+    @Transactional
     public void processVote(VoteDto voteDto) {
         Optional<Associate> associate = this.associateRepository.findById(voteDto.getAssociateId());
 
