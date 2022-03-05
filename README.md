@@ -1,16 +1,20 @@
 
 # Desafio Técnico
 
-####OBS: Para executar a api é necessário ter o docker instalado na maquina.
+#### OBS: Para executar a API é necessário ter o docker instalado na maquina.
 
-#####1 - Em um terminal navegue até a pasta raiz do projeto
-#####2 - Execute o comando abaixo para gerar o .jar
+##### 1 - Em um terminal navegue até a pasta raiz do projeto
+
+##### 2 - Execute o comando para gerar o .jar da API
     mvn clean install -U
-#####3 - Execute o comando abaixo para gerar a imagem docker
+    
+##### 3 - Execute o comando para gerar a imagem docker
     docker build -t desafio-back-votos:0.0.1-SNAPSHOT .
-#####4 - Execute o comando para subir os containers
+    
+##### 4 - Execute o comando para subir os containers
     docker-compose up
-####5 - Documentação por ser acessada
+    
+##### 5 - Documentação por ser acessada
     http://localhost:8080/swagger-ui/ 
 
 ## Objetivo
