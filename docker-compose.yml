@@ -1,0 +1,33 @@
+version: '3'
+
+services:
+  rabbitmq:
+    image: "rabbitmq:3-management"
+    environment:
+      RABBITMQ_DEFAULT_USER: "guest"
+      RABBITMQ_DEFAULT_PASS: "guest"
+      RABBITMQ_DEFAULT_VHOST: "/"
+    ports:
+      - "5672:5672"
+    volumes:
+      - ./database:/var/lib/postgresql/data
+
+  postgres:
+    image: postgres
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=dbvote
+    ports:
+      - "5432:5432"
+
+  docker-app:
+    image: desafio-back-votos:0.0.1-SNAPSHOT
+    environment:
+      POSTGRES_HOST: postgres
+      RABBIT_HOST: rabbitmq
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+      - rabbitmq
