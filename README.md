@@ -8,9 +8,10 @@
     mvn clean install -U
 #####3 - Execute o comando abaixo para gerar a imagem docker
     docker build -t desafio-back-votos:0.0.1-SNAPSHOT .
-#####4- Execute o comando para subir os containers
+#####4 - Execute o comando para subir os containers
     docker-compose up
-
+####5 - Documentação por ser acessada
+    http://localhost:8080/swagger-ui/ 
 
 ## Objetivo
 No cooperativismo, cada associado possui um voto e as decisões são tomadas em assembleias, por votação. A partir disso, você precisa criar uma solução back-end para gerenciar essas sessões de votação. Essa solução deve ser executada na nuvem e promover as seguintes funcionalidades através de uma API REST:

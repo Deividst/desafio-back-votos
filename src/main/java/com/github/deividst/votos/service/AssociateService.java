@@ -2,9 +2,11 @@ package com.github.deividst.votos.service;
 
 import com.github.deividst.votos.dtos.AssociateResponseDto;
 import com.github.deividst.votos.dtos.AssociateSaveRequestDto;
+import com.github.deividst.votos.exceptions.BusinessException;
 import com.github.deividst.votos.mapper.AssociateMapper;
 import com.github.deividst.votos.model.Associate;
 import com.github.deividst.votos.repository.AssociateRepository;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
@@ -19,9 +21,15 @@ public class AssociateService {
         this.associateRepository = associateRepository;
     }
 
-    public AssociateResponseDto save(AssociateSaveRequestDto associateDto){
+    public AssociateResponseDto save(AssociateSaveRequestDto associateDto) {
         Associate associateEntity = AssociateMapper.toEntity(associateDto);
-        associateEntity = this.associateRepository.save(associateEntity);
+
+        try {
+            associateEntity = this.associateRepository.save(associateEntity);
+        } catch (DataIntegrityViolationException e) {
+            throw new BusinessException("O cpf informado já foi cadastrado");
+        }
+
         return AssociateMapper.toDto(associateEntity);
     }
 

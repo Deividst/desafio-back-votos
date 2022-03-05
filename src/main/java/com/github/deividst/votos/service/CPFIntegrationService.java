@@ -26,11 +26,19 @@ public class CPFIntegrationService {
 
     public void checkCPF(String cpf) {
         log.info("CPFIntegrationService.checkCPF() - CPF: {} serviço de integração: {}", cpf, url);
-        ResponseEntity<CPFIntegrationDto> response = restTemplate.getForEntity(url + cpf, CPFIntegrationDto.class);
+        ResponseEntity<CPFIntegrationDto> response;
 
-        log.info("CPFIntegrationService.checkCPF() - Response: {}", response);
+        try {
+             response = restTemplate.getForEntity(url + cpf, CPFIntegrationDto.class);
+        } catch (Exception e) {
+            log.error("CPFIntegrationService.checkCPF(): Erro na comunicação com serviço:", e);
+            throw e;
+        }
 
-        if (Objects.nonNull(response.getBody()) && response.getBody().getStatus().equals(StatusCPFIntegrationEnum.UNABLE_TO_VOTE)) {
+        log.info("CPFIntegrationService.checkCPF() - Status {} - Response: {}", response.getStatusCode(), response.getBody());
+
+        if (Objects.nonNull(response.getBody())
+                && response.getBody().getStatus().equals(StatusCPFIntegrationEnum.UNABLE_TO_VOTE)) {
             throw new BusinessException("O associado informado não está apto a votar");
         }
     }

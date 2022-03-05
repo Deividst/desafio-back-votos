@@ -6,7 +6,7 @@ spring:
     driver-class-name: org.postgresql.Driver
     username: postgres
     password: postgres
-    url: jdbc:postgresql://localhost/dbvote?createDatabaseIfNotExist=true&useSSL=false&useTimezone=true&serverTimezone=UTC
+    url: jdbc:postgresql://${POSTGRES_HOST:localhost}:5432/dbvote?createDatabaseIfNotExist=true&useSSL=false&useTimezone=true&serverTimezone=UTC
   jpa:
     show-sql: true
     database: postgresql
@@ -32,10 +32,10 @@ spring:
             max-attempts: 1
 
   rabbitmq:
-    host: ${rabbit_host:localhost}
-    port: ${rabbit_port:5672}
-    username: ${rabbit_username:guest}
-    password: ${rabbit_password:guest}
+    host: ${RABBIT_HOST:localhost}
+    port: 5672
+    username: guest
+    password: guest
 
 info:
   app:

@@ -13,8 +13,8 @@ public class SwaggerSchemaConstants {
     public static final String SESSION_FINAL_EXAMPLE = "02-03-2022 09:11:00";
     public static final String ID_DESCRIPTION = "Identificador unico";
     public static final String ID_EXAMPLE = "1";
-    public static final String RECORD_STATUS_DESCRIPTION = "Status da pauta";
-    public static final String RECORD_STATUS_EXAMPLE = "IN_PROGRESS, APPROVED, DISAPPROVED";
+    public static final String RECORD_STATUS_DESCRIPTION = "Status da pauta (IN_PROGRESS, APPROVED, DISAPPROVED)";
+    public static final String RECORD_STATUS_EXAMPLE = "IN_PROGRESS";
     public static final String ERROR_MESSAGE_DESCRIPTION = "Lista de Mensagens de erro do sistema";
     public static final String ERROR_MESSAGE_EXAMPLE = "O campo subject é obrigatório";
     public static final String RECORD_ID_DESCRIPTION = "Identificador unico da Pauta";
@@ -25,8 +25,8 @@ public class SwaggerSchemaConstants {
     public static final String REGISTER_DATE_DESCRIPTION = "Data de inserção na base de dados";
     public static final String REGISTER_DATE_EXAMPLE = "02-03-2022 09:11:00";
     public static final String ASSOCIATE_ID_DESCRIPTION = "Identificador unico do associado";
-    public static final String VOTE_TYPE_DESCRIPTION = "Tipo de voto";
-    public static final String VOTE_TYPE_EXAMPLE = "YES, NO";
+    public static final String VOTE_TYPE_DESCRIPTION = "Tipo de voto (YES, NO)";
+    public static final String VOTE_TYPE_EXAMPLE = "YES";
 
 
 }

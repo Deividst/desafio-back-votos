@@ -2,6 +2,7 @@ package com.github.deividst.votos.controller;
 
 import com.github.deividst.votos.dtos.ErrorDataDto;
 import com.github.deividst.votos.dtos.VoteDto;
+import io.swagger.annotations.ApiOperation;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 public interface VoteController {
 
+    @ApiOperation("Votar em uma pauta")
     @Operation(description = "Realiza o processo de votação em uma pauta.")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Sucesso ao realizar votação."),

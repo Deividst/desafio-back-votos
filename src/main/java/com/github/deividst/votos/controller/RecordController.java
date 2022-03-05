@@ -3,6 +3,7 @@ package com.github.deividst.votos.controller;
 import com.github.deividst.votos.dtos.ErrorDataDto;
 import com.github.deividst.votos.dtos.RecordResponseDto;
 import com.github.deividst.votos.dtos.RecordSaveRequestDto;
+import io.swagger.annotations.ApiOperation;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -20,6 +21,7 @@ import java.util.List;
 
 public interface RecordController {
 
+    @ApiOperation("Salvar Pauta")
     @Operation(description = "Realiza o cadastro de uma nova Pauta.")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "201", description = "Sucesso ao cadastrar pauta.",
@@ -37,6 +39,7 @@ public interface RecordController {
     @ResponseStatus(HttpStatus.CREATED)
     ResponseEntity<RecordResponseDto> save(@Validated @RequestBody RecordSaveRequestDto recordDto);
 
+    @ApiOperation("Listar Pautas")
     @Operation(description = "Lista todas a pautas.")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Sucesso ao listar pautas.",

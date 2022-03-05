@@ -3,6 +3,7 @@ package com.github.deividst.votos.controller;
 import com.github.deividst.votos.dtos.ErrorDataDto;
 import com.github.deividst.votos.dtos.SessionResponseDto;
 import com.github.deividst.votos.dtos.SessionSaveRequestDto;
+import io.swagger.annotations.ApiOperation;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -19,6 +20,7 @@ import java.util.List;
 
 public interface SessionController {
 
+    @ApiOperation("Salvar Sessão")
     @Operation(description = "Realiza o cadastro de uma nova sessão.")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "201", description = "Sucesso ao cadastrar sessão.",
@@ -40,6 +42,7 @@ public interface SessionController {
     @ResponseStatus(HttpStatus.CREATED)
     ResponseEntity<SessionResponseDto> save(@Validated @RequestBody SessionSaveRequestDto sessionDto);
 
+    @ApiOperation("Listar Sessões")
     @Operation(description = "Lista todas as sessões.")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Sucesso ao listar sessões.",

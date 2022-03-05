@@ -4,6 +4,8 @@ import com.github.deividst.votos.dtos.AssociateResponseDto;
 import com.github.deividst.votos.dtos.AssociateSaveRequestDto;
 import com.github.deividst.votos.dtos.ErrorDataDto;
 import com.github.deividst.votos.dtos.RecordResponseDto;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -19,6 +21,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 public interface AssociateController {
 
+    @ApiOperation("Salvar Associado")
     @Operation(description = "Realiza o cadastro de uma novo associado.")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "201", description = "Sucesso ao cadastrar associado.",
@@ -36,6 +39,7 @@ public interface AssociateController {
     @ResponseStatus(HttpStatus.CREATED)
     ResponseEntity<AssociateResponseDto> save(@Validated @RequestBody AssociateSaveRequestDto associateDto);
 
+    @ApiOperation("Buscar associado por CPF")
     @Operation(description = "Realiza a busca de um associado pelo cpf.")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Sucesso ao buscar associado.",
@@ -47,5 +51,5 @@ public interface AssociateController {
                             schema = @Schema(implementation = ErrorDataDto.class)))
     })
     @ResponseStatus(HttpStatus.OK)
-    ResponseEntity<AssociateResponseDto> findByCpf(String cpf);
+    ResponseEntity<AssociateResponseDto> findByCpf(@ApiParam(value = "Cpf do associado", example = "36572935078") String cpf);
 }
